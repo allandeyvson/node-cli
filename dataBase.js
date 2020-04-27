@@ -1,5 +1,6 @@
 const {
-    readFile
+    readFile,
+    writeFile
 } = require('fs')
 
 const {
@@ -8,6 +9,8 @@ const {
 
 const readFileAsync = promisify(readFile)
 //const dataJson = require('./times.json')
+
+const writeFileAsync = promisify(writeFile)
 
 class DataBase {
     
@@ -20,8 +23,27 @@ class DataBase {
         return JSON.parse(archive.toString())        
     }
 
-    writeArchive(){
+    async writeArchive(data){
+        await writeFileAsync(this.NAME_ARCHIVE, JSON.stringify(data))
+        return true
+    }
 
+    async create(data){
+        
+        const datas = await this.getArchive()
+        const id = data.id <= 2 ? data.id : Date.now()
+    
+        const dataWithId = {
+            id,
+            ...data
+        }
+        const datasFinal = [
+            ...datas,
+            dataWithId
+        ]
+
+        const result = await this.writeArchive(datasFinal)
+        return result
     }
 
     async list(id){
