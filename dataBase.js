@@ -51,6 +51,21 @@ class DataBase {
         const dataFilter = data.filter(item => (id ? (item.id = id) : true))
         return dataFilter
     }
+
+    async remove(id){
+        if(!id){
+            return this.writeArchive([])
+        }
+        const datas = await this.getArchive()
+        const index = datas.findIndex(item => item.id == parseInt(id))
+
+        if(index == -1){
+            return Error('time de futebol não existe')
+        }
+
+        datas.splice(index)
+        return this.writeArchive(datas)
+    }
 }
 
 module.exports = new DataBase()
