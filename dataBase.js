@@ -48,7 +48,7 @@ class DataBase {
 
     async list(id){
         const data = await this.getArchive()
-        const dataFilter = data.filter(item => (id ? (item.id = id) : true))
+        const dataFilter = data.filter(item => (id ? (item.id == id) : true))
         return dataFilter
     }
 
@@ -63,8 +63,29 @@ class DataBase {
             return Error('time de futebol não existe')
         }
 
-        datas.splice(index)
+        datas.splice(index, 1)
         return this.writeArchive(datas)
+    }
+
+    async update(id, data){
+        const datas = await this.getArchive()
+        const index = datas.findIndex(item => item.id == parseInt(id))
+
+        if(index == -1){
+            return Error('time de futebol não existe')
+        }
+        const actualData = datas[index]
+        const updateData = {
+            ...actualData,
+            ...data
+        }
+        datas.splice(index,1)
+        console.log('resultado', datas)
+
+        return await this.writeArchive([
+            ...datas,
+            updateData
+        ])
     }
 }
 
