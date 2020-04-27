@@ -1,0 +1,23 @@
+{
+  "name": "node-cli",
+  "version": "1.0.0",
+  "description": "CLI desenvolvida em javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allandeyvson/node-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allandeyvson/node-cli/issues"
+  },
+  "homepage": "https://github.com/allandeyvson/node-cli#readme",
+  "devDependencies": {
+    "mocha": "^7.1.2"
+  }
+}
