@@ -19,5 +19,8 @@
   "homepage": "https://github.com/allandeyvson/node-cli#readme",
   "devDependencies": {
     "mocha": "^7.1.2"
+  },
+  "dependencies": {
+    "commander": "^5.1.0"
   }
 }

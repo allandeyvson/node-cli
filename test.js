@@ -6,13 +6,13 @@ const {
 const dataBase = require('./dataBase')
 const DEFAULT_ITEM_CREATE = {
     name: 'Palmeiras',
-    pais: 'Brasil',
+    country: 'Brasil',
     id: 1
 }
 
 const DEFAULT_ITEM_UPDATE = {
     name: 'Manchester United',
-    pais: 'Inglaterra',
+    country: 'Inglaterra',
     id: 2
 }
 
@@ -55,7 +55,6 @@ describe('suite de manipulação de times de futebol', () => {
         }
         const update = await dataBase.update(DEFAULT_ITEM_UPDATE.id, expected)
         const [result] = await dataBase.list(expected.id)
-        console.log('resultado', result)
         deepEqual(result, expected)
     })
 

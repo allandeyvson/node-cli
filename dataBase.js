@@ -31,7 +31,7 @@ class DataBase {
     async create(data){
         
         const datas = await this.getArchive()
-        const id = data.id <= 2 ? data.id : Date.now()
+        const id = (!data.id && data.id <= 2) ? data.id : Date.now()
     
         const dataWithId = {
             id,
@@ -59,8 +59,8 @@ class DataBase {
         const datas = await this.getArchive()
         const index = datas.findIndex(item => item.id == parseInt(id))
 
-        if(index == -1){
-            return Error('time de futebol não existe')
+        if(index === -1){
+            throw Error('Time de futebol não existe')
         }
 
         datas.splice(index, 1)
@@ -72,7 +72,7 @@ class DataBase {
         const index = datas.findIndex(item => item.id == parseInt(id))
 
         if(index == -1){
-            return Error('time de futebol não existe')
+            throw Error('Time de futebol não existe')
         }
         const actualData = datas[index]
         const updateData = {
@@ -80,7 +80,6 @@ class DataBase {
             ...data
         }
         datas.splice(index,1)
-        console.log('resultado', datas)
 
         return await this.writeArchive([
             ...datas,
