@@ -1,6 +1,6 @@
 const commander = require('commander')
-const dataBase = require('./dataBase')
-const Team = require('./team')
+const dataBase = require('./src/dataBase')
+const Team = require('./src/team')
 
 async function main(){
     commander

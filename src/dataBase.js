@@ -15,7 +15,7 @@ const writeFileAsync = promisify(writeFile)
 class DataBase {
     
     constructor(){
-        this.NAME_ARCHIVE = 'times.json'
+        this.NAME_ARCHIVE = './src/teams.json'
     }
 
     async getArchive(){

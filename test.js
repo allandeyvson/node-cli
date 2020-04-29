@@ -3,7 +3,8 @@ const {
     ok
 } = require('assert')
 
-const dataBase = require('./dataBase')
+const dataBase = require('./src/dataBase')
+
 const DEFAULT_ITEM_CREATE = {
     name: 'Palmeiras',
     country: 'Brasil',
